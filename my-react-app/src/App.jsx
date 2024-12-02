@@ -33,24 +33,54 @@
 // }
 
 // export default App
-import React, { useState } from 'react';
+// Use the -> useState hook to manage the state of the tweet input and the list of tweets.
+// Implement -> useEffect to handle side effects, like fetching data from server.
+// Utilize -> useRef for managing focus and other DOM manipulations if necessary.
+import React, { useState, useEffect, createContext } from 'react';
 import TweetInput from './TweetInput';
 import TweetList from './TweetList';
+import Sidebar from './Sidebar';
+import Header from './Header';
+import Profile from './Profile';
+import './App.css';
+
+export const AppContext = createContext();
 
 const App = () => {
   const [tweets, setTweets] = useState([]);
+  const [user, setUser] = useState({ name: 'User', profilePicture: 'user.jpg' });
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const fetchTweets = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
+        setTweets(data.slice(0, 10)); // Set initial tweets
+      } catch (error) {
+        console.error('Error fetching tweets:', error);
+      }
+    };
+  
+    fetchTweets();
+  }, []);
 
   const addTweet = (tweet) => {
     setTweets([tweet, ...tweets]);
   };
 
   return (
-    <div>
-      <h1>My Twitter Clone</h1>
-      <span>Welcome back</span>
-      <TweetInput addTweet={addTweet} />
-      <TweetList tweets={tweets} />
-    </div>
+    <AppContext.Provider value={{ user, theme, setTheme }}>
+      <div className={`app ${theme}`}>
+        <Header />
+        <Sidebar />
+        <main>
+          <Profile />
+          <TweetInput addTweet={addTweet} />
+          <TweetList tweets={tweets} />
+        </main>
+      </div>
+    </AppContext.Provider>
   );
 };
 
