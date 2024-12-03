@@ -19,14 +19,18 @@ const Tweet = ({ tweet }) => {
   const handleLike = () => {
     setLikes(likes + 1);
   };
-
+  console.log(tweet.updatedAt)
   return (
     <li>
       <p>{tweet.content}</p>
-      <small>By {tweet.author} on {tweet.date.toString()}</small>
+      
+      {/* <small>By {tweet.author} on {tweet.date.toLocalString()}</small>  */}
+      By {tweet.author} on {(tweet.updatedAt).toLocaleString()}
+      
       <TweetInteractions likes={likes} onLike={handleLike} />
     </li>
   );
 };
 
 export default Tweet;
+

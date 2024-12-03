@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1>Twitter Clone</h1>
+      <h1>My Twitter Clone</h1>
       <button onClick={toggleTheme}>
         Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
       </button>
