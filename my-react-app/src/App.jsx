@@ -14,8 +14,6 @@ const App = () => {
   useEffect(() => {
     // Simulate fetching data
     const fetchedTweets = [
-      { id: 1, text: 'Hello world!', likes: 0, retweets: 0, replies: [] },
-      { id: 2, text: 'Another tweet', likes: 2, retweets: 1, replies: [] },
     ];
     setTweets(fetchedTweets);
   }, [setTweets]);

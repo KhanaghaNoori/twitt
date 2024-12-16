@@ -15,7 +15,12 @@ const TweetInput = () => {
     e.preventDefault();
     if (input.trim()) {
       setTweets((prev) => [
-        { id: Date.now(), text: input, likes: 0, retweets: 0, replies: [], user: user.handle },
+        { id: Date.now(), 
+          text: input, 
+          likes: 0, 
+          retweets: 0, 
+          replies: [], 
+          user: user.handle },
         ...prev,
       ]);
       setInput('');
@@ -28,12 +33,11 @@ const TweetInput = () => {
         ref={inputRef}
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="What's happening?"
+        placeholder="What's happening?!"
         rows="3"
         cols="50"
       ></textarea>
-      <br />
-      <button type="submit">Tweet</button>
+      <button type="submit">Post</button>
     </form>
   );
 };

@@ -4,8 +4,8 @@ body {
 }
 
 header {
-  background-color: #1da1f2;
-  color: white;
+  background-color: #787a7a;
+  color: black;
   padding: 10px 0;
 }
 
@@ -17,14 +17,14 @@ textarea {
 
 button {
   padding: 10px 20px;
-  background-color: #1da1f2;
-  color: white;
+  background-color: #787a7a;
+  color: black;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0d8ae0;
+  background-color: black;
 }
 
 .tweet {
